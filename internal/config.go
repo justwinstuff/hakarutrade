@@ -26,3 +26,15 @@ func LoadConfig(configPath string) Config {
 
 	return config
 }
+
+func SaveConfig (config Config, configPath string) {
+	data, err := json.Marshal(config)
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.WriteFile(configPath, data, 0644)
+	if err != nil {
+		panic(err)
+	}
+}
