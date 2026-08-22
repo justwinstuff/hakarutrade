@@ -22,7 +22,7 @@ type Config struct {
 	} `json:"accounts"`
 }
 
-func CreateConfig() {	
+func createConfig() {	
 	var config Config
 
 	config.Accounts.Source = ids[0]
@@ -49,7 +49,7 @@ func generateId() string {
 	return uuid.NewString()
 }
 
-func DownloadMT5() {
+func downloadMT5() {
 	fmt.Println("Downloading MetaTrader 5...")
 
 	res, err := http.Get(mt5URL)
@@ -88,4 +88,9 @@ func DownloadMT5() {
 
 		ids[i] = id
 	}
+}
+
+func Setup() {
+	downloadMT5()
+	createConfig()
 }

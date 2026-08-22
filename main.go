@@ -18,8 +18,7 @@ func main() {
 	})
 	switch ctx.Command() {
 	case "setup":
-		cmd.DownloadMT5()
-		cmd.CreateConfig()
+		cmd.Setup()
 	default:
 		ctx.PrintUsage(false)
 	}
