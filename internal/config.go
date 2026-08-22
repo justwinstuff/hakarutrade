@@ -12,10 +12,10 @@ type Config struct {
 	} `json:"accounts"`
 }
 
-func LoadConfig() Config {
+func LoadConfig(configPath string) Config {
 	var config Config
 
-	data, err := os.ReadFile("config.json")
+	data, err := os.ReadFile(configPath)
 	if err != nil {
 		panic(err)
 	}
