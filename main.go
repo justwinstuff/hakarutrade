@@ -9,7 +9,7 @@ const ver = "a1.0.0"
 
 var CLI struct {
 	Version kong.VersionFlag `short:"v" help:"Print version."`
-	Setup struct{} `cmd:"" help:"Setup HakaruTrade"`
+	Setup   struct{}         `cmd:"" help:"Setup HakaruTrade"`
 }
 
 func main() {
