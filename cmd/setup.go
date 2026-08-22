@@ -10,20 +10,14 @@ import (
 	"path/filepath"
 
 	"github.com/google/uuid"
+	"github.com/justwinstuff/hakarutrade/internal"
 )
 
 const mt5URL = "https://download.terminal.free/cdn/web/metaquotes.ltd/mt5/mt5setup.exe"
 var ids [2]string
 
-type Config struct {
-	Accounts struct {
-		Source       string   `json:"source"`
-		Destinations []string `json:"destinations"`
-	} `json:"accounts"`
-}
-
 func createConfig() {	
-	var config Config
+	var config internal.Config
 
 	config.Accounts.Source = ids[0]
 	config.Accounts.Destinations = ids[1:]
