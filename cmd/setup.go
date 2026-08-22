@@ -56,6 +56,9 @@ func downloadMT5() {
 	if err != nil {
 		panic(err)
 	}
+	if res.StatusCode != http.StatusOK {
+		panic(fmt.Errorf("MetaTrader 5 download failed: %v", res.Status))
+	}
 	defer res.Body.Close()
 
 	insPath := filepath.Join(os.TempDir(), "hakarutrade-mt5installer.exe")
