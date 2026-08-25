@@ -87,6 +87,17 @@ func downloadMT5() {
 	}
 }
 
+func CheckSetup() bool {
+    for _, fileName := range []string{"terminals", "config.json"} {
+        _, err := os.Stat(fileName)
+        if err != nil {
+            return false
+        }
+    }
+
+    return true
+}
+
 func Setup() {
 	downloadMT5()
 	createConfig()

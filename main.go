@@ -23,7 +23,15 @@ func main() {
 	case "setup":
 		cmd.Setup()
 	case "serve":
-		fmt.Println("Serve")
+		if !cmd.CheckSetup() {
+			fmt.Println("Required files not found!")
+			fmt.Println("Running setup...")
+
+			cmd.Setup()
+		} else {
+			fmt.Println("A")
+		}
+
 	default:
 		ctx.PrintUsage(false)
 	}
