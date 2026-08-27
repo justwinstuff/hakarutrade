@@ -22,12 +22,14 @@ func main() {
 	switch ctx.Command() {
 	case "setup":
 		cmd.Setup()
+		fmt.Println("Setup is complete!")
 	case "serve":
 		if !cmd.CheckSetup() {
 			fmt.Println("Required files not found!")
 			fmt.Println("Running setup...")
 
 			cmd.Setup()
+			fmt.Println("Setup is complete! Run serve again.")
 		} else {
 			fmt.Println("A")
 		}
