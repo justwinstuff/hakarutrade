@@ -43,6 +43,18 @@ func generateId() string {
 	return uuid.NewString()
 }
 
+func installMT5(insPath string) {
+	dir := filepath.Join(os.TempDir(), "hakarutrade-mt5")
+
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Installing MetaTrader 5...")
+	err = exec.Command(insPath, "/auto", "/path:"+dir).Run()
+}
+
 func downloadMT5() {
 	fmt.Println("Downloading MetaTrader 5...")
 
@@ -67,24 +79,24 @@ func downloadMT5() {
 	}
 	insOut.Close()
 
-	for i := range ids {
-		id := generateId()
-		dir := filepath.Join("terminals", id)
+	// for i := range ids {
+	// 	id := generateId()
+	// 	dir := filepath.Join("terminals", id)
 
-		err := os.MkdirAll(dir, 0755)
-		if err != nil {
-			panic(err)
-		}
+	// 	err := os.MkdirAll(dir, 0755)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
 
-		fmt.Printf("Installing MetaTrader 5 for account: %v\n", id)
-		cmd := exec.Command(insPath, "/auto", "/path:"+dir)
-		err = cmd.Run()
-		if err != nil {
-			panic(err)
-		}
+	// 	fmt.Printf("Installing MetaTrader 5 for account: %v\n", id)
+	// 	cmd := exec.Command(insPath, "/auto", "/path:"+dir)
+	// 	err = cmd.Run()
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
 
-		ids[i] = id
-	}
+	// 	ids[i] = id
+	// }
 }
 
 func CheckSetup() bool {
